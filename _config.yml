@@ -18,7 +18,7 @@ email: a.rosas10@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   I'm Ana, I'm a software developer currently working at Travis CI
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://anarosas.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://anarosas.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 social_link: twitter
 social_username: ana_rosas
 github_username:  anarosas
