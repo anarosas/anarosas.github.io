@@ -30,9 +30,10 @@ github_username:  anarosas
 # Build settings
 darkmode: true
 home-posts-limit: 10
-theme: simply-cyan
+#theme: simply-cyan
 plugins:
   - jekyll-feed
+   - jekyll-remote-theme
 remote_theme: PQuod/simply-cyan-theme
 # Exclude from processing.
 # The following items will not be processed, by default.
