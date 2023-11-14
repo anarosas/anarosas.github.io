@@ -33,7 +33,7 @@ home-posts-limit: 10
 theme: simply-cyan
 plugins:
   - jekyll-feed
-
+remote_theme: PQuod/simply-cyan-theme
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
