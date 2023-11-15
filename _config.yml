@@ -23,7 +23,7 @@ email:
 description: "Ana's blog"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-copyright: "© Written with ❤️ by Ana"
+copyright: "Written with ❤️ by Ana. Simply cyan theme by github.com/PQuod"
 twitter_username: ana_rosas
 github_username:  anarosas
 
