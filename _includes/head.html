@@ -9,7 +9,5 @@
     <title>{{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
     <link rel="stylesheet" href="{{ "/assets/styles.css" | relative_url }}">
-    {%- if jekyll.environment == 'github-pages'  -%}
-      {%- include plausible-analytics.html -%}
-    {%- endif -%}
+    {%- include plausible-analytics.html -%}
   </head>
