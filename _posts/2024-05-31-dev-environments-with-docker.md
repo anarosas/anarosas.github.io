@@ -71,7 +71,7 @@ volumes:
   pg_data:
 ```
 
-You will need an `.env` file to set your ENV keys, such as POSTGRES_USER and POSTGRES_PASSWORD. Also note that you need to add a host on your `database.yml` config file. The host name should be the same as the name of your database service on the `docker-compose.yml` file, in this case `db`
+You will need an .env file to set your ENV keys, such as POSTGRES_USER and POSTGRES_PASSWORD. Also note that you need to add a host on your database.yml config file. The host name should be the same as the name of your database service on the docker-compose.yml file, in this case db. It’s important to mention that you’ll also need a volume for your database service, this volume it’s what will make your data be persistant (and don’t be destroy at every build)
 
 Your container will have it’s own network namespace, meaning that if you want to access your running rails server you need to make it accessible outside that network. Docker compose handles this via the ports directive. In this example I’m using 3000:3000 meaning that connections to port 3000 on the host machine will be redirected to port 3000 inside the container. However there’s a catch, by default rails in development environment will only listen on [localhost](http://localhost) (127.0.0.1 or ::1), so the redirection won’t work. To solve this, we need to add `0.0.0.0` to bind the server to all interfaces, instead of only using [`localhost`](http://localhost) and its `lo` interface.
 
