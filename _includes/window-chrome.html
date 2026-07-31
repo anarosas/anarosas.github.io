@@ -6,12 +6,12 @@
   </div>
   <nav class="chrome__tabs" aria-label="Site navigation">
     <a href="{{ '/' | relative_url }}"
-       class="tab{% if page.url == '/' %} tab--active{% endif %}">whoami.js</a>
+       class="tab{% if page.url == '/' %} tab--active{% endif %}">whoami.rb</a>
     <a href="{{ '/blog/' | relative_url }}"
        class="tab{% if page.url contains '/blog' or page.layout == 'post' %} tab--active{% endif %}">blog.md</a>
     <a href="{{ '/about/' | relative_url }}"
-       class="tab{% if page.url == '/about/' %} tab--active{% endif %}">about.sh</a>
+       class="tab{% if page.url == '/about/' %} tab--active{% endif %}">about.md</a>
     <a href="{{ '/contact/' | relative_url }}"
-       class="tab{% if page.url == '/contact/' %} tab--active{% endif %}">contact.sh</a>
+       class="tab{% if page.url == '/contact/' %} tab--active{% endif %}">contact.md</a>
   </nav>
 </header>
