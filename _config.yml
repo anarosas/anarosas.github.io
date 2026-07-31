@@ -35,7 +35,7 @@ author:
 
 markdown: kramdown
 
-# Keeps existing post URLs unchanged (e.g. /development/2023/11/14/back-to-my-roots.html)
+# Keeps existing post URLs unchanged (e.g. /Development/2023/11/14/back-to-my-roots.html)
 permalink: /:categories/:year/:month/:day/:title:output_ext
 
 # Build settings

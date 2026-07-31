@@ -3,7 +3,8 @@ layout: default
 title: Blog
 permalink: /blog/
 ---
-<p class="section-label">$ ls -la blog/</p>
+
+<p class="section-label">$ ls -lr blog/</p>
 <ul class="log log--full">
   {% for post in site.posts %}
   <li class="log__entry">

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Documentation Driven Devlopment"
+title: "Documentation Driven Development"
 date: 2023-11-20 17:05:50 -0600
 categories: management
 tags: [management]
