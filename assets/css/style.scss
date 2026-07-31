@@ -138,6 +138,7 @@ a:focus-visible { outline: 2px solid var(--key); outline-offset: 2px; }
   word-break: break-word;
 }
 .line.indent { padding-left: 1.5em; }
+.line.indent-2 { padding-left: 3em; }
 .line.comment { color: var(--text-dim); font-style: italic; }
 
 .kw  { color: var(--kw); }
