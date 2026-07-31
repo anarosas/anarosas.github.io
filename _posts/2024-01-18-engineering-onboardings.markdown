@@ -3,6 +3,7 @@ layout: post
 title: "Engineering Onboardings rambling"
 date: 2024-01-18 10:05:50 -0600
 categories: management
+tags: [management]
 author: "Ana"
 ---
 

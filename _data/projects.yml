@@ -1,0 +1,9 @@
+# One entry per project card on the home page.
+# The "projects" section on the homepage only renders when this list is
+# non-empty, so it's hidden for now. Uncomment/add entries below (matching
+# the shape in the example) to bring it back.
+#
+# - slug: payflow
+#   description: "Payments microservice handling 2M+ tx/day"
+#   stack: [Python, PostgreSQL, Kafka]
+#   url: https://github.com/anarosas/payflow

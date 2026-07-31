@@ -1,0 +1,40 @@
+# --- Merge these values into your EXISTING _config.yml ---
+# Don't overwrite your current config wholesale — copy in the keys you don't
+# already have, and merge `defaults` with any defaults you already define.
+
+title: Jane Doe
+description: Portfolio & blog of Jane Doe, backend software engineer.
+
+author:
+  name: Jane Doe
+  role: Backend Software Engineer
+  location: Paris, France
+  github: https://github.com/janedoe
+  linkedin: https://linkedin.com/in/janedoe
+  email: jane.doe@email.com
+
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+
+# Ensures posts/pages pick up the new layouts automatically without you
+# having to add `layout:` to every front matter block by hand.
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+exclude:
+  - README-INTEGRATION.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules

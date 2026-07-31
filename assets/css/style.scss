@@ -1,0 +1,318 @@
+---
+# front matter required so Jekyll runs this through Sass — do not remove
+---
+
+/* ============================================================
+   TOKENS — editor-inspired syntax palette. Not decoration:
+   every color maps to a real token type (keyword/string/key/etc).
+   ============================================================ */
+:root {
+  --bg:        #0d1117;
+  --bg-panel:  #12161d;
+  --border:    #262c36;
+  --text:      #c9d1d9;
+  --text-dim:  #6e7681;
+
+  --kw:    #ff7b72; /* keywords: const, function      */
+  --str:   #7ee787; /* strings: quoted values          */
+  --key:   #79c0ff; /* object keys                      */
+  --num:   #d29922; /* numbers / constants               */
+
+  --radius: 6px;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--key);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+a:hover, a:focus-visible { border-bottom-color: var(--key); }
+a:focus-visible { outline: 2px solid var(--key); outline-offset: 2px; }
+
+::selection { background: #264f78; color: #fff; }
+
+/* ============================================================
+   EDITOR SHELL
+   ============================================================ */
+.editor {
+  max-width: 1400px;
+  margin: 24px auto;
+  padding: 0 24px 60px;
+}
+
+.chrome {
+  border: 1px solid var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--bg-panel);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 16px;
+  overflow-x: auto;
+}
+
+.chrome__dots { display: flex; gap: 7px; flex: 0 0 auto; }
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.dot--red    { background: #ff5f56; }
+.dot--yellow { background: #ffbd2e; }
+.dot--green  { background: #27c93f; }
+
+.chrome__tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+
+.tab {
+  color: var(--text-dim);
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border-bottom: none;
+  white-space: nowrap;
+}
+.tab:hover { color: var(--text); border-bottom: none; background: rgba(255,255,255,0.04); }
+.tab--active {
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-bottom: 1px solid var(--bg);
+  margin-bottom: -1px;
+}
+
+.editor__body {
+  border: 1px solid var(--border);
+  border-top: none;
+  background: var(--bg);
+  padding: 32px 28px;
+}
+
+/* ============================================================
+   CODE-STYLE CONTENT BLOCKS
+   ============================================================ */
+.section-label {
+  color: var(--text-dim);
+  font-style: italic;
+  font-size: 14px;
+  margin: 40px 0 14px;
+}
+.editor__body > .file:first-of-type .section-label,
+.file#whoami .section-label { margin-top: 0; }
+
+.file { display: flex; gap: 18px; }
+.file__gutter {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-dim);
+  font-size: 14px;
+  text-align: right;
+  user-select: none;
+  flex: 0 0 auto;
+  padding-top: 2px;
+}
+.file__gutter span { line-height: 1.9; }
+.file__code { flex: 1 1 auto; min-width: 0; }
+
+.line {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.line.indent { padding-left: 1.5em; }
+.line.comment { color: var(--text-dim); font-style: italic; }
+
+.kw  { color: var(--kw); }
+.str { color: var(--str); }
+.key { color: var(--key); }
+.var { color: var(--num); }
+
+.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 1.1em;
+  background: var(--str);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* prose (the markdown body from index.md / about / contact) */
+.prose { max-width: 720px; margin: 28px 0 8px; color: var(--text); }
+.prose p { margin: 0 0 1em; }
+
+/* ============================================================
+   PROJECT CARDS (rendered like JSON objects)
+   ============================================================ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 4px;
+}
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  padding: 16px 18px;
+}
+.card__title, .card__line {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.card__line.indent { padding-left: 1.4em; }
+
+/* ============================================================
+   BLOG LIST (git log style)
+   ============================================================ */
+.log { list-style: none; margin: 0; padding: 0; }
+.log__entry {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 14.5px;
+  flex-wrap: wrap;
+}
+.log__entry:last-child { border-bottom: none; }
+.log__hash { color: var(--num); flex: 0 0 auto; }
+.log__title { color: var(--text); flex: 1 1 auto; border-bottom: none; }
+.log__title:hover { color: var(--key); }
+.log__date { color: var(--text-dim); flex: 0 0 auto; }
+
+/* homepage recent-posts list: title truncates with an ellipsis, date always on its own line */
+#recent-posts .section-label { margin-bottom: 26px; }
+#recent-posts .log__entry {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 16px 0;
+}
+#recent-posts .log__row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  min-width: 0;
+}
+#recent-posts .log__title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#recent-posts .see-all { margin-top: 30px; }
+
+.see-all {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--str);
+}
+
+/* ============================================================
+   POST / PAGE VIEW ("$ cat file.md")
+   ============================================================ */
+.terminal-file {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.post-title {
+  color: var(--text);
+  font-size: 26px;
+  margin: 6px 0 4px;
+}
+.post-meta {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin: 0 0 28px;
+}
+.post-content {
+  font-size: 16px;
+  line-height: 1.75;
+}
+.post-content h1, .post-content h2, .post-content h3 {
+  color: var(--key);
+  margin-top: 2em;
+}
+.post-content code {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.92em;
+}
+.post-content pre {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  overflow-x: auto;
+}
+.post-content pre code { background: none; border: none; padding: 0; }
+.post-content blockquote {
+  border-left: 3px solid var(--kw);
+  margin: 1.4em 0;
+  padding: 2px 16px;
+  color: var(--text-dim);
+}
+.post-content img { max-width: 100%; border-radius: var(--radius); }
+
+/* ============================================================
+   FOOTER PROMPT
+   ============================================================ */
+.prompt {
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--bg-panel);
+  padding: 16px 18px;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.prompt__user { color: var(--str); }
+.prompt__at, .prompt__sep { color: var(--text-dim); }
+.prompt__host { color: var(--key); }
+.prompt__links { color: var(--text-dim); }
+.prompt__links a { color: var(--text); }
+.prompt__links a:hover { color: var(--key); }
+.cursor {
+  color: var(--str);
+  animation: blink 1s step-end infinite;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .editor { margin: 20px auto; padding: 0 12px 40px; }
+  .editor__body { padding: 22px 16px; }
+  .file { gap: 10px; }
+  .file__gutter { display: none; }
+  .chrome { gap: 12px; }
+}

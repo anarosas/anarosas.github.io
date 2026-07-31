@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<article class="terminal-file">
+  <p class="section-label">$ cat {{ page.slug | default: page.name }}.md</p>
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

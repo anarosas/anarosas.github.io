@@ -23,18 +23,40 @@ email:
 description: "Ana's blog"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-copyright: "Written with ❤️ by Ana. Simply cyan theme by github.com/PQuod"
+copyright: "Written with ❤️ by Ana."
 twitter_username: ana_rosas
-github_username:  anarosas
+github_username: anarosas
+
+author:
+  name: Ana
+  role: "Software Engineer and Engineering Manager"
+  github: https://github.com/anarosas
+  linkedin: https://www.linkedin.com/in/rosasana/
+
+markdown: kramdown
+
+# Keeps existing post URLs unchanged (e.g. /development/2023/11/14/back-to-my-roots.html)
+permalink: /:categories/:year/:month/:day/:title:output_ext
 
 # Build settings
-darkmode: true
 home-posts-limit: 10
-#theme: simply-cyan
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme
-remote_theme: PQuod/simply-cyan-theme
+
+# Ensures posts/pages pick up the terminal-themed layouts automatically
+# without needing `layout:` in every front matter block.
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -43,7 +65,10 @@ remote_theme: PQuod/simply-cyan-theme
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
+# portfolio-site/ is the source scaffold this design was migrated from —
+# excluded so Jekyll doesn't build it as a second copy of the site.
+exclude:
+  - portfolio-site/
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

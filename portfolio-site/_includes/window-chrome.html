@@ -1,0 +1,16 @@
+<header class="chrome">
+  <div class="chrome__dots" aria-hidden="true">
+    <span class="dot dot--red"></span>
+    <span class="dot dot--yellow"></span>
+    <span class="dot dot--green"></span>
+  </div>
+  <nav class="chrome__tabs" aria-label="Site navigation">
+    <a href="{{ '/' | relative_url }}"
+       class="tab{% if page.url == '/' %} tab--active{% endif %}">whoami.js</a>
+    <a href="{{ '/#projects' | relative_url }}" class="tab">projects.json</a>
+    <a href="{{ '/blog/' | relative_url }}"
+       class="tab{% if page.url contains '/blog' or page.layout == 'post' %} tab--active{% endif %}">blog.md</a>
+    <a href="{{ '/contact/' | relative_url }}"
+       class="tab{% if page.url == '/contact/' %} tab--active{% endif %}">contact.sh</a>
+  </nav>
+</header>

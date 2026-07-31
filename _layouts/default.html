@@ -1,14 +1,16 @@
-
-{%- include head.html -%}
-  <body>
-    {%- include functions.html -%}
-    {%- include header.html -%}
-    <main class="page_content" aria-label="Content">
-      
-    {{ content | markdownify }}
-
+<!doctype html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+<body>
+  <div class="editor">
+    {% include window-chrome.html %}
+    <main class="editor__body">
+      {{ content }}
     </main>
-    {%- include footer.html -%}
-    {%- include functionsscript.html -%}
-  </body>
+    {% include footer.html %}
+  </div>
+  <script src="{{ '/assets/js/terminal.js' | relative_url }}" defer></script>
+</body>
 </html>

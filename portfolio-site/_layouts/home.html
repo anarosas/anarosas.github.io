@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<section class="file" id="whoami">
+  <div class="file__gutter" aria-hidden="true">
+    {% for i in (1..7) %}<span>{{ i }}</span>{% endfor %}
+  </div>
+  <div class="file__code">
+    <p class="line comment" data-typewriter>$ whoami</p>
+    <p class="line"><span class="kw">const</span> <span class="var">jane</span> = {</p>
+    <p class="line indent"><span class="key">name</span>: <span class="str">"{{ site.author.name }}"</span>,</p>
+    <p class="line indent"><span class="key">role</span>: <span class="str">"{{ site.author.role }}"</span>,</p>
+    <p class="line indent"><span class="key">location</span>: <span class="str">"{{ site.author.location }}"</span>,</p>
+    <p class="line indent"><span class="key">focus</span>: [<span class="str">"distributed systems"</span>, <span class="str">"APIs"</span>, <span class="str">"dev tools"</span>],</p>
+    <p class="line">};</p>
+  </div>
+</section>
+
+<section class="prose">
+  {{ content }}
+</section>
+
+<section class="file" id="projects">
+  <p class="section-label">// projects.json</p>
+  <div class="cards">
+    {% for project in site.data.projects %}
+    <article class="card">
+      <p class="card__title"><span class="kw">const</span> <span class="var">{{ project.slug }}</span> = {</p>
+      <p class="card__line indent"><span class="key">desc</span>: <span class="str">"{{ project.description }}"</span>,</p>
+      <p class="card__line indent"><span class="key">stack</span>: [{% for t in project.stack %}<span class="str">"{{ t }}"</span>{% unless forloop.last %}, {% endunless %}{% endfor %}],</p>
+      <p class="card__line indent"><span class="key">link</span>: <a href="{{ project.url }}">"{{ project.url }}"</a>,</p>
+      <p class="card__line">};</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="file" id="recent-posts">
+  <p class="section-label">// git log --oneline -- blog/</p>
+  <ul class="log">
+    {% for post in site.posts limit: 5 %}
+    <li class="log__entry">
+      <span class="log__hash">{{ post.date | date: "%Y%m%d" }}</span>
+      <a class="log__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="log__date">{{ post.date | date: "%b %d, %Y" }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <a class="see-all" href="{{ '/blog/' | relative_url }}">$ cd blog/ &amp;&amp; ls -la &rarr;</a>
+</section>
